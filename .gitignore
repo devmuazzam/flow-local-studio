@@ -1,0 +1,17 @@
+.venv/
+.runtime/
+.local/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Local renders and machine-specific manifests; keep authored prompts in Git.
+outputs/*.mp4
+outputs/*manifest.json
+
+# Local credentials and environment overrides.
+.env
+.env.*
+!.env.example
+*.pem
+*.key

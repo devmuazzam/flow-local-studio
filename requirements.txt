@@ -1,0 +1,2 @@
+# Qualified locally; update deliberately, then run the integration checks.
+gflow-cli==0.92.0

@@ -1,0 +1,27 @@
+{
+  "title": "One Last Light",
+  "bible": "A single knee-high, weathered copper robot with a rounded head, two circular amber glass eyes, short articulated hands, and one faded teal knitted scarf. A small circular amber energy light is set in the center of its chest. No other robot, no humans, no costume changes. One tiny oval golden seed and one small round terracotta flowerpot full of dark soil are the only important props. The same abandoned glass greenhouse at rainy blue dawn throughout: cracked glass roof, mossy stone floor, blurred green vines, a wooden potting bench behind the robot. The robot kneels screen-left, the terracotta pot stays screen-right, and the camera remains on the front-left side of that axis. Cool blue environment, warm amber energy, then soft green plant light. The seed receives the robot's final energy; the robot powers down; the growing plant gives light back to the robot. Emotion through eye brightness, head angle and hand movement. No dialogue, no writing, no visible numbers, no captions, no soundtrack; only gentle rain, soft servos and a subtle energy hum.",
+  "episodes": [
+    {
+      "title": "One Last Light",
+      "summary": "A little robot spends its final charge saving a seed. The life it saves brings its light back.",
+      "scenes": [
+        {
+          "beat": "The last charge",
+          "duration": 10,
+          "prompt": "OPENING SHOT, 0–10 seconds. Immediate emotional hook: a tiny golden seed is fading in the copper robot's open LEFT palm, held just above the terracotta pot. The robot kneels screen-left, pot screen-right. Start close enough to see the seed, the teal scarf and both round amber eyes together. The robot looks from the fading seed to its own barely glowing chest light, hesitates for one quiet beat, then chooses to help. Its RIGHT index finger touches the chest light and moves toward the seed, drawing one fine amber thread of energy. The robot's eyes soften. End with the seed still supported by the LEFT palm above the soil and the RIGHT fingertip just meeting it; the energy thread is connected and its sacrifice has begun. Continuous gentle push-in from the front-left, 50mm lens, shallow depth of field, rain on glass, quiet servos. Keep the entire action unbroken and end in motion, without a fade. The rest of the story has not happened yet: no plant and no powered-down robot in this first shot."
+        },
+        {
+          "beat": "A life for a life",
+          "duration": 10,
+          "prompt": "CONTINUATION SHOT, 10–20 seconds. Previous action in full: the SAME copper robot in the SAME teal scarf found the golden seed fading in its LEFT palm above the terracotta pot. It looked at its weak chest light and chose to save the seed. Its RIGHT index finger drew a fine amber thread from the chest and has JUST touched the seed. Begin exactly at that ending pose and composition; do not repeat the decision or introduce another seed. The robot now lowers the seed from its LEFT palm into the soil while its RIGHT fingertip transfers the remaining amber energy. The seed gives one warm pulse beneath the soil. As that pulse subsides, the robot's chest light and round amber eyes gently go dark, and its head tilts down. End with the robot motionless in its kneeling pose, LEFT hand resting on the pot's left rim, RIGHT fingertips touching the soil, head bowed beside the pot. The seed is buried; there is not yet a visible sprout. Continue the preceding slow camera move on the same front-left axis, no angle reversal. Rain and a soft electrical hum that fades to silence; no music or words."
+        },
+        {
+          "beat": "The light comes back",
+          "duration": 10,
+          "prompt": "FINAL CONTINUATION SHOT, 20–30 seconds. Complete previous context: the SAME weathered copper robot with a teal scarf carried a dying golden seed over the terracotta pot, drew its last energy from the amber chest light into its RIGHT fingertip, placed the seed in the soil with its LEFT palm, and gave the seed that energy. Its eyes and chest then went dark. Start exactly on the resulting pose: robot kneeling screen-left, bowed head, dark eyes and chest, LEFT hand on the pot rim, RIGHT fingertips resting in the soil, pot screen-right. Do not replay the transfer and do not show a second robot. A delicate green sprout now slowly breaks through the soil beside the right fingertips. A small warm green-gold pulse travels from the sprout along the robot's touching fingertips; its two amber eyes and chest light softly wake. The robot lifts its head a little, sees the living sprout, and gently cups the pot with both hands. End on that quiet earned moment of mutual rescue: two little lights alive together. Keep the same greenhouse, camera axis and rain ambience; a tiny servo awakening and one soft energy chime. Maintain one shot with a very gentle widening move, no abrupt cut, no titles and no fade-out."
+        }
+      ]
+    }
+  ]
+}

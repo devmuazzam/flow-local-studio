@@ -8,6 +8,7 @@ __pycache__/
 # Local renders and machine-specific manifests; keep authored prompts in Git.
 outputs/*.mp4
 outputs/*manifest.json
+outputs/*-preview.json
 
 # Local credentials and environment overrides.
 .env

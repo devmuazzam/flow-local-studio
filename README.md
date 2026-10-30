@@ -144,4 +144,16 @@ The Studio submits to n8n through a local proxy. The worker API requires the gen
 
 A seed frame is a visual starting reference, not a deterministic numeric random seed. Flow may still vary motion or character details. The original clips, exact prompt text, attachment frames, and approval audit remain in `.local/stories/<id>/`.
 
+## Optional local finishing preview
+
+For an assembled video with ten-second shots, make a separate exposure-matched preview:
+
+```bash
+python3 scripts/finish-video.py input.mp4 output-preview.mp4
+```
+
+The script compares frames on both sides of each join. Where their composition is sufficiently similar, it fits a small exposure correction and tapers it over 1.25 seconds on each side. It preserves shot timing and stream-copies the existing audio. Existing files are never overwritten. The adjacent JSON report records the measured changes. This is an optional finishing step; it does not change the default assembly or call Flow.
+
+Add `--motion-fps 48 --workers 3` to create motion-compensated intermediate frames locally. This can take several minutes and produces an interpolated 48 fps preview from the original footage. Inspect fast weapons, hands, lightning and wings for distortions. Interpolation cannot restore missing detail or repair changes in character anatomy, staging or camera direction. Keep the original export for comparison.
+
 The agent adapter accepts `prepare_only: true` in its internal request JSON to upload and select an ending image without submitting or approving a generation. Its audit records `submitted: false` and `phase: prepared`. On accounts exposing a standard composer, it can open the built-in Agent mode and dismiss its onboarding notice.

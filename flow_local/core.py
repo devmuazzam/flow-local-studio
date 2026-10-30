@@ -280,6 +280,13 @@ def ffmpeg(args):
     subprocess.run(["ffmpeg", "-hide_banner", "-loglevel", "error", "-y", *map(str, args)], check=True, timeout=1200)
 
 
+def extract_last_frame(source, destination):
+    # Seeking 0.1 seconds before EOF and taking the first frame steps backwards
+    # by several frames. Decode the short tail and select its actual final frame.
+    ffmpeg(["-sseof", "-0.5", "-i", source, "-an", "-vf", "reverse",
+            "-frames:v", "1", "-update", "1", destination])
+
+
 def dimensions(spec):
     width, height = (360, 640) if spec["resolution"] == "360p" else (720, 1280)
     return (width, height) if spec["aspect"] == "9:16" else (height, width)
@@ -415,7 +422,7 @@ def run_story(story_id, max_new_clips=0):
                         if index and story["spec"].get("continuity") == "last-frame":
                             previous = get_story(story_id)["scenes"][index-1]
                             seed_frame = folder / f"seed-before-e{ep:02}-s{si:02}.png"
-                            ffmpeg(["-sseof", "-0.1", "-i", previous["path"], "-frames:v", "1", "-update", "1", seed_frame])
+                            extract_last_frame(previous["path"], seed_frame)
                             if not seed_frame.exists():
                                 raise ValueError("Previous clip's ending frame could not be extracted.")
                         args = ["video", "i2v" if seed_frame else "t2v", prompt, "--model", "omni-flash", "--duration", "10",

@@ -78,6 +78,24 @@ class PipelineTests(unittest.TestCase):
                 with core.browser_lock():
                     pass
 
+    def test_continuity_image_is_actual_final_frame(self):
+        source = core.DATA / "moving-reference.mp4"
+        frame = core.DATA / "final-reference.png"
+        core.ffmpeg(["-f", "lavfi", "-i", "testsrc2=size=64x64:rate=24:duration=1",
+                     "-c:v", "libx264", "-pix_fmt", "yuv420p", source])
+        core.extract_last_frame(source, frame)
+
+        def pixels(path, filters=None):
+            args = ["ffmpeg", "-v", "error", "-i", str(path)]
+            if filters:
+                args += ["-vf", filters]
+            return subprocess.check_output(args + ["-frames:v", "1", "-pix_fmt", "rgb24",
+                                                   "-f", "rawvideo", "-"])
+
+        actual = pixels(frame)
+        self.assertEqual(actual, pixels(source, "select=eq(n\\,23)"))
+        self.assertNotEqual(actual, pixels(source, "select=eq(n\\,22)"))
+
     def test_plan_and_profile_validation(self):
         s = self.story()
         p = demo_plan()

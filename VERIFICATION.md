@@ -37,3 +37,9 @@ Limits:
 - The Studio's generic story form still defaults to the stock gflow adapter. The tested agent adapter, project and last-frame continuity are specified in the story JSON/API.
 - Generation runs on Google's servers using subscription credits. Planning and assembly run locally.
 - Visual reference and full context improve continuity, but do not provide deterministic motion, voices or pixel-perfect seams.
+
+## Last Kingdom live render — 2026-10-31
+
+Six distinct native 1280 × 720 Omni Flash clips were generated on the second connected account, with full preceding context and actual ending-frame references. Each subsequent prompt was adjusted from its observed preceding ending. The completed landscape film has exactly 60.000 seconds, stereo 48 kHz audio and no packet timestamp gaps. Local finishing balances sound levels and adds quiet procedural wind; the encoded video stream is unchanged. No audio gap below −50 dB lasting 250 ms was detected in the finished export.
+
+Flow’s standard uploader intermittently failed before opening a file chooser. Existing uploaded ending images were selected by verified asset ID and name instead. Download-link failures were recovered from existing completed tiles; completed clips were not regenerated. Live `prepare_only` frame uploads for shots 5 and 6 recorded no submission and no approval. Nine regression tests pass. Operator recovery files and browser sessions remain in ignored `.local/`.

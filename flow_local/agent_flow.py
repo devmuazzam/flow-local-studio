@@ -122,6 +122,10 @@ async def generate(request, audit, result_file):
                 audit['attachment_media_id'] = uploaded.get('id')
                 audit['initial_frame_attached'] = True
             await page.screenshot(path=str(result_file.with_suffix('.prepared.png')))
+            if request.get('prepare_only'):
+                audit['phase'] = 'prepared'
+                result_file.write_text(json.dumps(audit, indent=2))
+                return
             audit['phase'] = 'submitting'
             result_file.write_text(json.dumps(audit, indent=2))
             await page.locator(agent.SUBMIT).last.click(timeout=10000)
@@ -144,6 +148,14 @@ async def generate(request, audit, result_file):
             path = await agent.download_video(page,src,'recovered-existing-clip',recover_save)
             audit.update(succeeded=True,status='ok',local_path=str(path),phase='recovered',recovered_existing=True)
             return
+        # Some accounts start with the standard composer but expose the same
+        # built-in Agent behind a mode button. Selecting it spends no credits.
+        if not await page.locator('flow-creative-agent-prompt-box').count():
+            await page.get_by_role('button', name='Agent', exact=True).click()
+            await page.locator('flow-creative-agent-prompt-box').wait_for(state='visible', timeout=15000)
+        onboarding = page.get_by_role('button', name='Got it, dismiss onboarding message', exact=True)
+        if await onboarding.is_visible():
+            await onboarding.click()
         snapshot = await composer.apply_defaults(page, section='video',
             aspect_ligature=ASPECT_LIGATURE[Aspect.from_cli(request['aspect'])], count=1,
             model=VIDEO_MODEL_MENU_MATCHERS[VideoModel.OMNI_FLASH], confirm='always')
@@ -158,6 +170,9 @@ async def generate(request, audit, result_file):
                 "The maximum permitted charge is 15 credits. "
                 + ('Use the attached image as the precise initial frame, continuing that composition and motion. ' if request.get('initial_frame') else '')
                 + request['prompt'])
+            if request.get('prepare_only'):
+                await composer._submit(page, prompt)
+                return
             async def monitor():
                 while True:
                     await asyncio.sleep(15)
